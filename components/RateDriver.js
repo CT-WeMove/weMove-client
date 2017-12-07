@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text } from 'react-native'
 import StarRating from 'react-native-star-rating'
 import axios from 'axios'
 
 import { tripStyles } from '../Styles/Styles'
 
 import CustomButton from './CustomButton'
-import LogoSVG from './LogoSVG'
 
 class RateDriver extends Component {
   constructor() {
