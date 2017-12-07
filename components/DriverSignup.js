@@ -59,14 +59,16 @@ class DriverSignup extends Component {
   }
   _goToSelfie = () => {
     const tier = this._getTier(this.state.tier)
+    console.log(this.state.name, this.state.price_base, this.state.price_per_mile)
     axios.post('https://wemove-184522.appspot.com/api/drivers/signup', {
-      name: this.state.name,
-      price_base: this.state.price_base,
-      price_per_mile: this.state.price_per_mile,
-      tier: tier,
-      location: this.state.location.coords
+      'name': this.state.name,
+      'price_base': Number(this.state.price_base),
+      'price_per_mile': Number(this.state.price_per_mile),
+      'tier': tier,
+      'location': this.state.location.coords
     })
       .then(res => {
+        console.log('post: ', res.data)
         this.props.navigation.navigate('TakeSelfie', {
           userId: res.data,
           userType: 'driver'

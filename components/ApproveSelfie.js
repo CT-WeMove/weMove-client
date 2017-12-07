@@ -65,6 +65,7 @@ class ApproveSelfie extends Component {
         })
         .catch(console.error)
     } else if (this.state.userType === 'driver') {
+      console.log('id', this.state.userId)
       axios.put('https://wemove-184522.appspot.com/api/drivers/signup', {
         id: this.state.userId,
         width: this.state.selfie.width,
