@@ -1,23 +1,17 @@
 import React, { Component } from 'react'
 import Expo from 'expo'
-import { Text, View, Image } from 'react-native'
+import { Text, View, Image, TextInput } from 'react-native'
 
-import { mainStyle, logoStyle, cameraStyles } from '../Styles/Styles'
+import { accountStyles } from '../Styles/Styles'
 import CustomButton from './CustomButton'
 
-class ApproveSelfie extends Component {
+class CreateAccount extends Component {
   constructor() {
     super()
     this.state = {
       name: '',
       phone: '',
     }
-  }
-  componentWillMount() {
-    const { state } = this.props.navigation
-    this.setState({
-      selfie: state.params.selfie
-    })
   }
   _goToSelfie = () => {
     this.props.navigation.navigate('TakeSelfie')
@@ -29,20 +23,23 @@ class ApproveSelfie extends Component {
   }
   render() {
     return (
-      <View style={mainStyle.container}>
+      <View style={accountStyles.container}>
         <TextInput
-          onChangeText={(text) => this._onChangeName(text, 'name')}
+          style={accountStyles.input}
+          onChangeText={(text) => this._onChangeText(text, 'name')}
           placeholder="Enter your name"
           placeholderTextColor="#888888"
           value={this.state.name}
-          autofocus={true}
+          autoFocus={true}
+          autoGrow={true}
         />
         <TextInput
-          onChangeText={(text) => this._onChangeName(text, 'phone')}
+          style={accountStyles.input}
+          onChangeText={(text) => this._onChangeText(text, 'phone')}
           placeholder="Enter your phone number"
           placeholderTextColor="#888888"
           value={this.state.phone}
-          autofocus={true}
+          autoGrow={true}
         />
         <CustomButton
           _onButtonPress={this._goToSelfie}
@@ -54,4 +51,4 @@ class ApproveSelfie extends Component {
   }
 }
 
-export default ApproveSelfie
+export default CreateAccount

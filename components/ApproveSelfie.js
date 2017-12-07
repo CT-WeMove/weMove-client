@@ -22,6 +22,9 @@ class ApproveSelfie extends Component {
     //backend logic to send photo TK
     this.props.navigation.navigate('Map')
   }
+  _takeAnother = () => {
+    this.props.navigation.navigate('TakeSelfie')
+  }
   render() {
     return (
       <View style={mainStyle.container}>
@@ -42,7 +45,7 @@ class ApproveSelfie extends Component {
             inverse={false}
           />
           <CustomButton
-            _onButtonPress={this._approvePhoto}
+            _onButtonPress={this._takeAnother}
             text="TAKE ANOTHER"
             inverse={true}
           />

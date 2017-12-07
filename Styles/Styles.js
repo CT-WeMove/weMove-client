@@ -197,3 +197,24 @@ export const cameraStyles = StyleSheet.create({
     height: viewportWidth * 0.8
   }
 })
+
+export const accountStyles = StyleSheet.create({
+  container: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    width: viewportWidth,
+    height: viewportHeight,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    paddingTop: viewportHeight * 0.3,
+    paddingBottom: viewportHeight * 0.3
+  },
+  input: {
+    fontSize: Number(20),
+    width: viewportWidth * 0.8
+  }
+})
