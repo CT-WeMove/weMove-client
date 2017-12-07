@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, Image } from 'react-native'
 import StarRating from 'react-native-star-rating'
 
 import { tripStyles } from '../Styles/Styles'
@@ -32,17 +32,19 @@ class DriverHome extends Component {
     })
   }
   render() {
+    console.log('picture: ', this.state.picture)
     return (
       <View style={tripStyles.container}>
-        <Text style={tripStyles.sectionHeading}>WELCOME, {this.state.name}!</Text>
+        <Text style={tripStyles.sectionHeading}>Welcome, {this.state.name}!</Text>
 
         {
           this.state.picture.length > 0 ? (
             <View style={tripStyles.centeredContainer}>
               <Image
                 source={{ uri: `${this.state.picture}` }}
-                width={this.state.picWidth}
-                height={this.state.picHeight}
+                style={tripStyles.bigImage}
+                width={200}
+                height={200}
               />
             </View>
           ) : null

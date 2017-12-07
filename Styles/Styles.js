@@ -133,10 +133,18 @@ export const tripStyles = StyleSheet.create({
     paddingTop: viewportHeight * 0.1,
     paddingBottom: viewportHeight * 0.1
   },
-  image: {
-    height: 150,
-    width: 150,
-    borderRadius: 75,
+  bigImage: {
+    height: 200,
+    width: 200,
+    borderRadius: 100,
+    resizeMode: 'cover',
+    borderColor: 'darkslategray',
+    borderWidth: 1
+  },
+  smallImage: {
+    height: 100,
+    width: 100,
+    borderRadius: 50,
     resizeMode: 'cover',
     borderColor: 'darkslategray',
     borderWidth: 1
@@ -151,13 +159,26 @@ export const tripStyles = StyleSheet.create({
   },
   titleBottom: {
     fontSize: Number(20),
-    paddingTop: '10%'
+    paddingTop: '5%'
   },
   centeredContainer: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  rowContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    width: viewportWidth * 0.75
+  },
+  imageDescriptionContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'center'
   },
   hr: {
     borderBottomWidth: 1,

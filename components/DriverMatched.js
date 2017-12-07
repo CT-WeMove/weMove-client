@@ -69,14 +69,16 @@ class DriverMatched extends Component {
       <View style={tripStyles.container}>
         <Text style={tripStyles.sectionHeading}>DRIVER MATCHED!</Text>
 
-        <View style={tripStyles.centeredContainer}>
+        <View style={tripStyles.rowContainer}>
           <Image
             source={{uri: `${this.state.driver.picture}`}}
-            style={tripStyles.image}
+            style={tripStyles.smallImage}
           />
-          <Text style={tripStyles.titleTop}>{this.state.driver.name}</Text>
-          <Text>{this.state.driver.rating} out of 5 stars</Text>
-          <Text>{this.state.time} away</Text>
+          <View style={tripStyles.imageDescriptionContainer}>
+            <Text style={tripStyles.titleTop}>{this.state.driver.name}</Text>
+            <Text>{this.state.driver.rating} out of 5 stars</Text>
+            <Text>{this.state.time} away</Text>
+          </View>
         </View>
 
         <View style={tripStyles.hr} />

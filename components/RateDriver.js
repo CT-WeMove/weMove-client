@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, Image } from 'react-native'
 import StarRating from 'react-native-star-rating'
 import axios from 'axios'
 
@@ -46,6 +46,10 @@ class RateDriver extends Component {
         {
           this.state.driver.name ? (
             <View style={tripStyles.centeredContainer}>
+              <Image
+                source={{ uri: `${this.state.driver.picture}` }}
+                style={tripStyles.image}
+              />
               <Text style={tripStyles.titleTop}>{this.state.driver.name}</Text>
             </View>
           ) : null

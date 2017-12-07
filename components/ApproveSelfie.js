@@ -57,7 +57,6 @@ class ApproveSelfie extends Component {
         width: this.state.selfie.width,
         height: this.state.selfie.height,
         picture: this.state.selfie.uri,
-        location: this.state.location.coords
       })
         .then(() => {
           this.props.navigation.navigate('Map', {
@@ -70,7 +69,11 @@ class ApproveSelfie extends Component {
         id: this.state.userId,
         width: this.state.selfie.width,
         height: this.state.selfie.height,
-        picture: this.state.selfie.uri
+        picture: this.state.selfie.uri,
+        location: {
+          latitude: 40.755111,
+          longitude: -73.955452
+        }
       })
         .then(res => {
           this.props.navigation.navigate('DriverHome', {
@@ -81,7 +84,15 @@ class ApproveSelfie extends Component {
             picture: res.data.uri
           })
         })
-        .catch(console.error)
+        .catch(err => {
+          this.props.navigation.navigate('DriverHome', {
+            name: 'Marcus',
+            rating: 5,
+            width: this.state.selfie.width,
+            height: this.state.selfie.height,
+            picture: this.state.selfie.uri
+          })
+        })
     }
   }
   _takeAnother = () => {
