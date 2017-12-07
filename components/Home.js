@@ -22,6 +22,9 @@ class HomeScreen extends Component {
   _onButtonPress = () => {
     this.props.navigation.navigate('Map')
   }
+  _createAccount = () => {
+    this.props.navigation.navigate('CreateAccount')
+  }
   render() {
     return (
       <View style={mainStyle.container}>
@@ -40,6 +43,11 @@ class HomeScreen extends Component {
                   text="GET A MOVER"
                   _onButtonPress={this._onButtonPress}
                   inverse={false}
+                />
+                <CustomButton
+                  text="CREATE AN ACCOUNT"
+                  _onButtonPress={this._createAccount}
+                  inverse={true}
                 />
               </View>
             ) : (

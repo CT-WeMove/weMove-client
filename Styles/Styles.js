@@ -157,3 +157,43 @@ export const tripStyles = StyleSheet.create({
     width: viewportWidth * 0.75,
   },
 })
+
+export const cameraStyles = StyleSheet.create({
+  cameraContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
+    alignItems: 'center'
+  },
+  buttonRow: {
+    flex: 1,
+    backgroundColor: 'transparent',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: viewportWidth * 0.8,
+    position: 'absolute',
+    bottom: 10,
+    alignSelf: 'center'
+  },
+  photoContainer: {
+    // flex: 0.1,
+    alignSelf: 'flex-end',
+    alignItems: 'center'
+  },
+  flipContainer: {
+    // flex: 0.1,
+    alignSelf: 'flex-start',
+    alignItems: 'center'
+  },
+  buttonText: {
+    fontSize: 20,
+    marginBottom: 10,
+    color: 'white',
+  },
+  imageDisplay: {
+    resizeMode: 'contain',
+    width: viewportWidth * 0.8,
+    height: viewportWidth * 0.8
+  }
+})

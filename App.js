@@ -7,6 +7,10 @@ import DriverMatched from './components/DriverMatched'
 import OnTrip from './components/OnTrip'
 import RateDriver from './components/RateDriver'
 
+import CreateAccount from './components/CreateAccount'
+import TakeSelfie from './components/TakeSelfie'
+import ApproveSelfie from './components/ApproveSelfie'
+
 export default StackNavigator({
   Home: {
     screen: HomeScreen
@@ -25,7 +29,16 @@ export default StackNavigator({
   },
   RateDriver: {
     screen: RateDriver
+  },
+  CreateAccount: {
+    screen: CreateAccount
+  },
+  TakeSelfie: {
+    screen: TakeSelfie
+  },
+  ApproveSelfie: {
+    screen: ApproveSelfie
   }
 }, {
-  headerMode: 'none'
-})
+    headerMode: 'none'
+  })
