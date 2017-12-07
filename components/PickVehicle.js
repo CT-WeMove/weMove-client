@@ -21,20 +21,23 @@ class PickVehicle extends Component {
       mileage: 0,
       activeSlide: 0,
       sliderRef: null,
-      buttonText: 'REQUEST'
+      buttonText: 'REQUEST',
+      userId: 0
     }
   }
   requestVehicle = (vehicle) => {
     this.setState({
       buttonText: 'REQUESTING...'
     })
-    axios.get(`https://wemove-184522.appspot.com/api/drivers/${vehicle.id}`, {})
+    axios.get(`https://wemove-184522.appspot.com/api/drivers/${vehicle.id}`, {
+      id: this.state.userId
+    })
       .then(res => {
         this.props.navigation.navigate('DriverMatched', {
           time: res.data.time,
-          driver: res.data.driver,
+          driver: Object.assign({rating: vehicle.id}, res.data.driver),
           vehicle,
-
+          id: this.state.userId
         })
       })
   }
@@ -80,7 +83,8 @@ class PickVehicle extends Component {
     this.setState({
       destination: state.params.destination,
       entries: newEntries,
-      mileage: state.params.mileage
+      mileage: state.params.mileage,
+      userId: state.params.userId
     })
   }
   render() {

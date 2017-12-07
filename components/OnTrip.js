@@ -21,7 +21,8 @@ class OnTrip extends Component {
   }
   _skip() {
     this.props.navigation.navigate('RateDriver', {
-      driver: this.state.driver
+      driver: this.state.driver,
+      userId: this.state.userId
     })
   }
   componentDidMount() {
@@ -29,7 +30,8 @@ class OnTrip extends Component {
     this.setState({
       svg: state.params.svg,
       driver: state.params.driver,
-      vehicle: state.params.vehicle
+      vehicle: state.params.vehicle,
+      userId: state.params.userId
     })
   }
   render() {

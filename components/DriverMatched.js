@@ -16,7 +16,8 @@ class DriverMatched extends Component {
     this.state = {
       svg: null,
       driver: {},
-      vehicle: {}
+      vehicle: {},
+      userId: 0
     }
     this._getSVG = this._getSVG.bind(this)
     this._confirmDriver = this._confirmDriver.bind(this)
@@ -26,7 +27,8 @@ class DriverMatched extends Component {
     this.props.navigation.navigate('OnTrip', {
       svg: this.state.svg,
       driver: this.state.driver,
-      vehicle: this.state.vehicle
+      vehicle: this.state.vehicle,
+      userId: this.state.userId
     })
   }
   _cancel() {
@@ -58,7 +60,8 @@ class DriverMatched extends Component {
         rating: state.params.driver.rating,
         picture: state.params.driver.picture
       },
-      time: state.params.time
+      time: state.params.time,
+      userId: state.params.id
     })
   }
   render() {

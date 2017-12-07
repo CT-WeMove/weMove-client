@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import StarRating from 'react-native-star-rating'
+import axios from 'axios'
 
 import { tripStyles } from '../Styles/Styles'
 
@@ -17,7 +18,14 @@ class RateDriver extends Component {
     this._submitRating = this._submitRating.bind(this)
   }
   _submitRating() {
-    this.props.navigation.navigate('Home')
+    axios.post('https://wemove-184522.appspot.com/api/requests', {
+      driver: this.state.driver.id,
+      id: this.state.userId,
+      rating: this.state.userRating
+    })
+      .then(() => {
+        this.props.navigation.navigate('Home')
+      })
   }
   _changeRating(rating) {
     this.setState({

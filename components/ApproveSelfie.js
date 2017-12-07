@@ -34,7 +34,9 @@ class ApproveSelfie extends Component {
         picture: this.state.selfie.uri
       })
         .then(() => {
-          this.props.navigation.navigate('Map')
+          this.props.navigation.navigate('Map', {
+            userId: this.state.userId
+          })
         })
         .catch(console.error)
     } else if (this.state.userType === 'driver') {
