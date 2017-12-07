@@ -49,10 +49,10 @@ class DriverSignup extends Component {
         return 'pickup'
       case 'Cargo Van':
         return 'cargo'
-      case 'Moving Van':
-        return 'moving'
       case 'Box Truck':
         return 'box'
+      case 'Moving Truck':
+        return 'moving'
       default:
         return 'pickup'
     }

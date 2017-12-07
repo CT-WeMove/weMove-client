@@ -26,6 +26,9 @@ class RateDriver extends Component {
       .then(() => {
         this.props.navigation.navigate('Home')
       })
+      .catch(err => {
+        this.props.navigation.navigate('Home')
+      })
   }
   _changeRating(rating) {
     this.setState({
@@ -48,7 +51,7 @@ class RateDriver extends Component {
             <View style={tripStyles.centeredContainer}>
               <Image
                 source={{ uri: `${this.state.driver.picture}` }}
-                style={tripStyles.image}
+                style={tripStyles.bigImage}
               />
               <Text style={tripStyles.titleTop}>{this.state.driver.name}</Text>
             </View>
