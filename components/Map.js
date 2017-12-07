@@ -68,11 +68,8 @@ export default class Map extends Component {
         })
       })
       .catch(err => {
-        console.error(err)
-        this.props.navigation.navigate('PickVehicle', {
-          destination,
-          entries: ENTRIES,
-          mileage: 0
+        this.setState({
+          destination: 'Woops, I couldn\'t find that location.'
         })
       })
 
