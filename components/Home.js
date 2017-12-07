@@ -49,13 +49,7 @@ class HomeScreen extends Component {
                 />
                 <View style={{height: 25}} />
                 <CustomButton
-                  text="CREATE A USER ACCOUNT"
-                  _onButtonPress={this._createUserAccount}
-                  inverse={false}
-                />
-                <View style={{height: 25}} />
-                <CustomButton
-                text="CREATE A DRIVER ACCOUNT"
+                text="BECOME A DRIVER"
                 _onButtonPress={this._createDriverAccount}
                 inverse={false}
               />

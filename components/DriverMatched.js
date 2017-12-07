@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, Image } from 'react-native'
 
 import { mainStyle, tripStyles } from '../Styles/Styles'
 import CarouselStyles from '../Styles/CarouselStyles'

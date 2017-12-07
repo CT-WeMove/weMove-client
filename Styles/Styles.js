@@ -137,7 +137,9 @@ export const tripStyles = StyleSheet.create({
     height: 150,
     width: 150,
     borderRadius: 75,
-    resizeMode: 'cover'
+    resizeMode: 'cover',
+    borderColor: 'darkslategray',
+    borderWidth: 1
   },
   sectionHeading: {
     color: 'darkslategray',

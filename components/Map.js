@@ -23,14 +23,9 @@ export default class Map extends Component {
         }
       },
       destination: '',
-      userId: 0
     }
   }
   componentWillMount() {
-    const { state } = this.props.navigation
-    this.setState({
-      userId: state.params.userId
-    })
     Location.watchPositionAsync(GEOLOCATION_OPTIONS, this._locationChanged)
   }
   _getLocationAsync = async () => {
@@ -63,14 +58,15 @@ export default class Map extends Component {
         latitude: this.state.location.coords.latitude,
         longitude: this.state.location.coords.longitude
       },
-      destination
+      destination,
+      id: 1
     })
       .then(res => {
         this.props.navigation.navigate('PickVehicle', {
           destination,
           entries: res.data.vehicles,
           mileage: res.data.mileage,
-          userId: this.state.userId
+          userId: 1
         })
       })
       .catch(err => {

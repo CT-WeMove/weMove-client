@@ -22,16 +22,16 @@ class PickVehicle extends Component {
       activeSlide: 0,
       sliderRef: null,
       buttonText: 'REQUEST',
-      userId: 0
+      userId: 1
     }
   }
   requestVehicle = (vehicle) => {
     this.setState({
       buttonText: 'REQUESTING...'
     })
-    axios.get(`https://wemove-184522.appspot.com/api/drivers/${vehicle.id}`, {
-      id: this.state.userId
-    })
+    console.log('userId', this.state.userId)
+    console.log('vehicleId', vehicle.id)
+    axios.get(`https://wemove-184522.appspot.com/api/drivers/${vehicle.id}`, {})
       .then(res => {
         this.props.navigation.navigate('DriverMatched', {
           time: res.data.time,

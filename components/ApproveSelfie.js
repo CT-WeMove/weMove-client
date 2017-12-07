@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
-import Expo from 'expo'
-import { Text, View, Image } from 'react-native'
+import Expo, { Constants, Location, Permissions } from 'expo'
+import { Text, View, Image, TextInput, TouchableOpacity } from 'react-native'
+import SimplePicker from 'react-native-simple-picker'
+import Geocoder from 'react-native-geocoding'
 import axios from 'axios'
+
+import { Geocoding_API_Key } from '../secrets'
+
+const GEOLOCATION_OPTIONS = { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 };
 
 import { mainStyle, tripStyles, cameraStyles } from '../Styles/Styles'
 import CustomButton from './CustomButton'
@@ -12,7 +18,13 @@ class ApproveSelfie extends Component {
     this.state = {
       selfie: {},
       userId: 0,
-      userType: ''
+      userType: '',
+      location: {
+        coords: {
+          latitude: 0,
+          longitude: 0
+        }
+      },
     }
   }
   componentWillMount() {
@@ -22,16 +34,30 @@ class ApproveSelfie extends Component {
       userId: state.params.userId,
       userType: state.params.userType
     })
+    Location.watchPositionAsync(GEOLOCATION_OPTIONS, this._locationChanged)
   }
+  _getLocationAsync = async () => {
+    let { status } = await Permissions.askAsync(Permissions.LOCATION);
+    if (status !== 'granted') {
+      this.setState({
+        errorMessage: 'Permission to access location was denied',
+      });
+    }
+
+    let location = await Location.getCurrentPositionAsync({});
+    this.setState({ location });
+  };
   _approvePhoto = () => {
     console.log('selfie.uri: ', this.state.selfie.uri)
     console.log('userType: ', this.state.userType)
+    console.log('userId: ', this.state.userId)
     if (this.state.userType === 'user') {
       axios.put('https://wemove-184522.appspot.com/api/users/signup', {
         id: this.state.userId,
         width: this.state.selfie.width,
         height: this.state.selfie.height,
-        picture: this.state.selfie.uri
+        picture: this.state.selfie.uri,
+        location: this.state.location.coords
       })
         .then(() => {
           this.props.navigation.navigate('Map', {

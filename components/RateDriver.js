@@ -17,6 +17,7 @@ class RateDriver extends Component {
     this._submitRating = this._submitRating.bind(this)
   }
   _submitRating() {
+    console.log('driverid: ', this.state.driver.id)
     axios.post('https://wemove-184522.appspot.com/api/requests', {
       driver: this.state.driver.id,
       id: this.state.userId,
