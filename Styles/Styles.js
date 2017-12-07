@@ -133,6 +133,12 @@ export const tripStyles = StyleSheet.create({
     paddingTop: viewportHeight * 0.1,
     paddingBottom: viewportHeight * 0.1
   },
+  image: {
+    height: 150,
+    width: 150,
+    borderRadius: 75,
+    resizeMode: 'cover'
+  },
   sectionHeading: {
     color: 'darkslategray',
     fontSize: 20,
@@ -215,6 +221,7 @@ export const accountStyles = StyleSheet.create({
   },
   input: {
     fontSize: Number(20),
-    width: viewportWidth * 0.8
+    width: viewportWidth * 0.8,
+    textAlign: 'center',
   }
 })

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View, TouchableOpacity, Image } from 'react-native';
 import { Camera, Permissions, FileSystem } from 'expo';
+import axios from 'axios'
 
 import { cameraStyles } from '../Styles/Styles'
 
@@ -10,16 +11,21 @@ class TakeSelfie extends React.Component {
     this.state = {
       hasCameraPermission: null,
       type: Camera.Constants.Type.front,
-      selfie: {}
+      selfie: {},
+      userId: 0,
+      userType: ''
     }
     this.takePicture = this.takePicture.bind(this)
   }
 
   componentWillMount() {
+    const { state } = this.props.navigation
     Permissions.askAsync(Permissions.CAMERA)
       .then(res => {
         this.setState({
-          hasCameraPermission: res.status === 'granted'
+          hasCameraPermission: res.status === 'granted',
+          userId: state.params.userId,
+          userType: state.params.userType
         })
       })
   }
@@ -28,14 +34,18 @@ class TakeSelfie extends React.Component {
     if (this.camera) {
       this.camera.takePictureAsync({
         quality: 4,
+        base64: true
       })
         .then(res => {
           this.props.navigation.navigate('ApproveSelfie', {
             selfie: {
               uri: res.uri,
               width: res.width,
-              height: res.height
-            }
+              height: res.height,
+              base64: res.base64
+            },
+            userId: this.state.userId,
+            userType: this.state.userType
           })
         })
     }

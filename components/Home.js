@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Expo from 'expo'
 import { Text, View, ImageBackground } from 'react-native'
 
-import { mainStyle, logoStyle } from '../Styles/Styles'
+import { mainStyle, logoStyle, tripStyles } from '../Styles/Styles'
 import LogoSVG from './LogoSVG'
 import Wordmark from './Wordmark'
 import CustomButton from './CustomButton'
@@ -22,16 +22,19 @@ class HomeScreen extends Component {
   _onButtonPress = () => {
     this.props.navigation.navigate('Map')
   }
-  _createAccount = () => {
-    this.props.navigation.navigate('CreateAccount')
+  _createUserAccount = () => {
+    this.props.navigation.navigate('UserSignup')
+  }
+  _createDriverAccount = () => {
+    this.props.navigation.navigate('DriverSignup')
   }
   render() {
     return (
-      <View style={mainStyle.container}>
+      <View style={tripStyles.container}>
         <ImageBackground
           source={{
             uri: 'https://storage.googleapis.com/wemove-184522.appspot.com/background.jpg'}}
-          style={mainStyle.container}
+          style={tripStyles.container}
           onLoad={this.loadAssets}
         >
           {
@@ -44,11 +47,18 @@ class HomeScreen extends Component {
                   _onButtonPress={this._onButtonPress}
                   inverse={false}
                 />
+                <View style={{height: 25}} />
                 <CustomButton
-                  text="CREATE AN ACCOUNT"
-                  _onButtonPress={this._createAccount}
-                  inverse={true}
+                  text="CREATE A USER ACCOUNT"
+                  _onButtonPress={this._createUserAccount}
+                  inverse={false}
                 />
+                <View style={{height: 25}} />
+                <CustomButton
+                text="CREATE A DRIVER ACCOUNT"
+                _onButtonPress={this._createDriverAccount}
+                inverse={false}
+              />
               </View>
             ) : (
                 <View style={logoStyle.container}>

@@ -7,9 +7,12 @@ import DriverMatched from './components/DriverMatched'
 import OnTrip from './components/OnTrip'
 import RateDriver from './components/RateDriver'
 
-import CreateAccount from './components/CreateAccount'
+import UserSignup from './components/UserSignup'
+import DriverSignup from './components/DriverSignup'
 import TakeSelfie from './components/TakeSelfie'
 import ApproveSelfie from './components/ApproveSelfie'
+
+import DriverHome from './components/DriverHome'
 
 export default StackNavigator({
   Home: {
@@ -30,14 +33,20 @@ export default StackNavigator({
   RateDriver: {
     screen: RateDriver
   },
-  CreateAccount: {
-    screen: CreateAccount
+  UserSignup: {
+    screen: UserSignup
+  },
+  DriverSignup: {
+    screen: DriverSignup
   },
   TakeSelfie: {
     screen: TakeSelfie
   },
   ApproveSelfie: {
     screen: ApproveSelfie
+  },
+  DriverHome: {
+    screen: DriverHome
   }
 }, {
     headerMode: 'none'

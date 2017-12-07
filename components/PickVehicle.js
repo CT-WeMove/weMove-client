@@ -33,7 +33,8 @@ class PickVehicle extends Component {
         this.props.navigation.navigate('DriverMatched', {
           time: res.data.time,
           driver: res.data.driver,
-          vehicle
+          vehicle,
+
         })
       })
   }

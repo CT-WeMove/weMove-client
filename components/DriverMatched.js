@@ -46,7 +46,7 @@ class DriverMatched extends Component {
         return null
     }
   }
-  componentDidMount() {
+  componentWillMount() {
     const { state } = this.props.navigation
       , vehicle = state.params.vehicle
       , svg = this._getSVG(vehicle.title);
@@ -55,7 +55,8 @@ class DriverMatched extends Component {
       svg,
       driver: {
         name: state.params.driver.name[0].toUpperCase() + state.params.driver.name.slice(1),
-        rating: state.params.driver.rating
+        rating: state.params.driver.rating,
+        picture: state.params.driver.picture
       },
       time: state.params.time
     })
@@ -66,6 +67,10 @@ class DriverMatched extends Component {
         <Text style={tripStyles.sectionHeading}>DRIVER MATCHED!</Text>
 
         <View style={tripStyles.centeredContainer}>
+          <Image
+            source={{uri: `${this.state.driver.picture}`}}
+            style={tripStyles.image}
+          />
           <Text style={tripStyles.titleTop}>{this.state.driver.name}</Text>
           <Text>{this.state.driver.rating} out of 5 stars</Text>
           <Text>{this.state.time} away</Text>

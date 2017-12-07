@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Expo from 'expo'
 import { Text, View, Image } from 'react-native'
+import axios from 'axios'
 
 import { mainStyle, tripStyles, cameraStyles } from '../Styles/Styles'
 import CustomButton from './CustomButton'
@@ -9,18 +10,51 @@ class ApproveSelfie extends Component {
   constructor() {
     super()
     this.state = {
-      selfie: {}
+      selfie: {},
+      userId: 0,
+      userType: ''
     }
   }
   componentWillMount() {
     const { state } = this.props.navigation
     this.setState({
-      selfie: state.params.selfie
+      selfie: state.params.selfie,
+      userId: state.params.userId,
+      userType: state.params.userType
     })
   }
   _approvePhoto = () => {
-    //backend logic to send photo TK
-    this.props.navigation.navigate('Map')
+    console.log('selfie.uri: ', this.state.selfie.uri)
+    console.log('userType: ', this.state.userType)
+    if (this.state.userType === 'user') {
+      axios.put('https://wemove-184522.appspot.com/api/users/signup', {
+        id: this.state.userId,
+        width: this.state.selfie.width,
+        height: this.state.selfie.height,
+        picture: this.state.selfie.uri
+      })
+        .then(() => {
+          this.props.navigation.navigate('Map')
+        })
+        .catch(console.error)
+    } else if (this.state.userType === 'driver') {
+      axios.put('https://wemove-184522.appspot.com/api/drivers/signup', {
+        id: this.state.userId,
+        width: this.state.selfie.width,
+        height: this.state.selfie.height,
+        picture: this.state.selfie.uri
+      })
+        .then(res => {
+          this.props.navigation.navigate('DriverHome', {
+            name: res.data.name,
+            rating: res.data.rating,
+            width: res.data.width,
+            height: res.data.height,
+            picture: res.data.uri
+          })
+        })
+        .catch(console.error)
+    }
   }
   _takeAnother = () => {
     this.props.navigation.navigate('TakeSelfie')
@@ -41,14 +75,14 @@ class ApproveSelfie extends Component {
         <View style={tripStyles.centeredContainer}>
           <CustomButton
             _onButtonPress={this._approvePhoto}
-            text="APPROVE + CREATE ACCOUNT"
+            text="CREATE ACCOUNT"
             inverse={false}
           />
-          <CustomButton
+          {/*<CustomButton
             _onButtonPress={this._takeAnother}
             text="TAKE ANOTHER"
             inverse={true}
-          />
+          />*/}
         </View>
       </View>
     )
