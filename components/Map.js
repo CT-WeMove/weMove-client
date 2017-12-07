@@ -22,7 +22,7 @@ export default class Map extends Component {
           longitude: 0
         }
       },
-      destination: 'Where to?',
+      destination: '',
     }
   }
   componentWillMount() {
@@ -97,6 +97,10 @@ export default class Map extends Component {
         region={this.state.region}
       >
         <TextInput
+          autoFocus={true}
+          autoGrow={true}
+          placeholder='Where to?'
+          placeholderTextColor="#888888"
           style={mapStyles.destination}
           value={this.state.destination}
           onChangeText={(destination) => this.setState({ destination })}

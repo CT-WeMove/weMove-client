@@ -82,7 +82,9 @@ export const mapStyles = StyleSheet.create({
   },
   destination: {
     backgroundColor: '#ffffff',
-    padding: 10,
+    fontSize: Number(15),
+    padding: 15,
+    textAlign: 'center',
     width: '70%',
     position: 'absolute',
     top: '30%',

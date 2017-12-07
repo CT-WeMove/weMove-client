@@ -26,7 +26,8 @@ class HomeScreen extends Component {
     return (
       <View style={mainStyle.container}>
         <ImageBackground
-          source={require('../assets/splash.png')}
+          source={{
+            uri: 'https://storage.googleapis.com/wemove-184522.appspot.com/background.jpg'}}
           style={mainStyle.container}
           onLoad={this.loadAssets}
         >
@@ -42,10 +43,10 @@ class HomeScreen extends Component {
                 />
               </View>
             ) : (
-              <View style={logoStyle.container}>
-                <LogoSVG />
-                <Text>Loading...</Text>
-              </View>
+                <View style={logoStyle.container}>
+                  <LogoSVG />
+                  <Text>Loading...</Text>
+                </View>
               )
           }
         </ImageBackground>
