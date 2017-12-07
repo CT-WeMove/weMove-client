@@ -77,12 +77,13 @@ class ApproveSelfie extends Component {
         }
       })
         .then(res => {
+          console.log("res", res.data)
           this.props.navigation.navigate('DriverHome', {
             name: res.data.name,
             rating: res.data.rating,
             width: res.data.width,
             height: res.data.height,
-            picture: res.data.uri
+            picture: res.data.picture
           })
         })
         .catch(err => {
